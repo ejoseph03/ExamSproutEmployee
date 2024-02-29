@@ -1,0 +1,104 @@
+﻿@page
+@using System.Data.SqlClient;
+@model EmployeeSalary.Pages.Employee.calculatesalaryModel
+@{
+
+}
+<form method="POST">
+    <input type="hidden" name="id" value="@Model.employeeInfo.id" />
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Full Name</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="fn" value="@Model.employeeInfo.fn" readonly="readonly" />
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Birthdate</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="bdate" value="@Model.employeeInfo.bdate" readonly="readonly" />
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">TIN</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="tin" value="@Model.employeeInfo.tin" readonly="readonly" />
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Employee Type</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="emp_type" value="@Model.employeeInfo.emp_type" readonly="readonly" />
+        </div>
+    </div>
+
+
+    @if (@Model.employeeInfo.emp_type == "Regular")
+    {
+
+        <div class="row mb-3">
+            <label class="col-sm-3 col-form-label">Salary</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" name="salary" value="20000" readonly="readonly" />
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label class="col-sm-3 col-form-label">Tax</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" name="tax" value="12%" readonly="readonly" />
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label class="col-sm-3 col-form-label">Absent Days</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" name="aDays" value="" />
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="row mb-3">
+            <label class="col-sm-3 col-form-label">Rate Per Day</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" name="ratePerDay" value="500" readonly="readonly" />
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label class="col-sm-3 col-form-label">Worked Days</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" name="wDays" value="" />
+            </div>
+        </div>
+
+    }
+
+    <div class="row mb-3">
+        <div class="col-sm-3 col-sm-3 d-grid">
+            <button type="submit" class="btn btn-primary">Calculate</button>
+        </div>
+        <div class="col-sm-3 d-grid">
+            <a class="btn btn-outline-primary" href="/Employee/Index" role="button">Back</a>
+        </div>
+    </div>
+    @if (Model.valueregular.Length > 0)
+    {
+        <div class="row mb-3">
+            <div class="col-sm-9">
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>@Model.valueregular</strong>
+                    <button type="button" class="btn-success" data-dismiss="alert" aria-label="Close"></button>
+                </div>
+            </div>
+        </div>
+    }
+    @if (Model.valuecontractual.Length > 0)
+    {
+        <div class="row mb-3">
+            <div class="col-sm-9">
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>@Model.valuecontractual</strong>
+                    <button type="button" class="btn-success" data-dismiss="alert" aria-label="Close"></button>
+                </div>
+            </div>
+        </div>
+    }
+</form>

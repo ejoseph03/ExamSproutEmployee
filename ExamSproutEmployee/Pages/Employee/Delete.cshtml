@@ -1,0 +1,30 @@
+﻿@page  
+@using System.Data.SqlClient;
+
+
+@{
+    try
+    {
+        string id = Request.Query["id"];
+
+        string connectionString = "Server=KINGEDWARD\\LocalDB;Database=SproutExamDb;User Id=sa;Password=password@1;";
+        using (SqlConnection connection = new SqlConnection(connectionString))
+        {
+            connection.Open();
+            String Sqlstring = "UPDATE Employee SET isDeleted = 'true' WHERE id = @id";
+
+            using (SqlCommand command = new SqlCommand(Sqlstring, connection))
+            {
+                command.Parameters.AddWithValue("@id",id);
+
+                command.ExecuteNonQuery();
+
+            }
+        }
+    }
+    catch (Exception ex)
+    {
+
+    }
+    Response.Redirect("/Employee/Index");
+}

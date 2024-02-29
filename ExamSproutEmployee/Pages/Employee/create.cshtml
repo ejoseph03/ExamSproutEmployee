@@ -1,0 +1,74 @@
+﻿@page
+@model EmployeeSalary.Pages.Employee.createModel
+@using EmployeeSalary.Pages.Employee
+<add namespace="EmployeeSalary.Pages.Employee" />
+@{
+}
+
+
+<br />
+<h2>AddNew EMPLOYEE</h2>
+@if (Model.errormessage.Length > 0)
+{
+    <div class="row mb-3">
+        <div class="col-sm-9">
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>@Model.errormessage</strong>
+                <button type="button" class="btn-success" data-dismiss="alert" aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+}
+
+<form method="POST">
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Full Name</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="fn" value="@Model.employeeInfo.fn" />
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Birthdate</label>
+        <div class="col-sm-6">
+            <input id="fromdate" type="date" class="form-control" name="bdate" value="@Model.employeeInfo.bdate" />
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">TIN</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="tin" value="@Model.employeeInfo.tin" />
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Employee Type</label>
+        <div class="col-sm-6">
+            @*<input type="text class="form-control" name="emp_type" value="@Model.employeeInfo.emp_type" />*@
+            <select id="emp_type" name="emp_type">
+                <option value="1">Regular</option>
+                <option value="2">Contractual</option>
+
+            </select>
+        </div>
+    </div>
+
+    @if (Model.successMessage.Length > 0)
+    {
+        <div class="row mb-3">
+            <div class="col-sm-9">
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>@Model.successMessage</strong>
+                    <button type="button" class="btn-success" data-dismiss="alert" aria-label="Close"></button>
+                </div>
+            </div>
+        </div>
+    }
+
+    <div class="row mb-3">
+        <div class="col-sm-3 col-sm-3 d-grid">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+        <div class="col-sm-3 d-grid">
+            <a class="btn btn-outline-primary" href="/" role="button">Cancel</a>
+        </div>
+    </div>
+</form>

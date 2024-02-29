@@ -1,0 +1,37 @@
+﻿@page
+@model EmployeeSalary.Pages.Employee.IndexModel
+@{
+}
+
+<br />
+<h2>Employee List</h2>
+<a class='btn btn-primary btn-sm' href ='/Employee/Create'>New Employee</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Full Name</th>
+            <th>Birth Date</th>
+            <th>TIN</th>
+            <th>Employee Type</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.listEmployees)
+        {
+        <tr>
+            <td>@item.id</td>
+            <td>@item.fn</td>
+            <td>@item.bdate</td>
+            <td>@item.tin</td>
+            <td>@item.emp_type</td>
+            <td>
+                <a class="btn btn-primary btn-sm" href="/Employee/Edit?id=@item.id">Edit</a>
+                <a class="btn btn-info btn-sm" href="/Employee/Calculatesalary?id=@item.id">Calculate</a>
+                <a class="btn btn-danger btn-sm" href="/Employee/Delete?id=@item.id">Delete</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table> 
