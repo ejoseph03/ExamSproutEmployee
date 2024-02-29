@@ -1,4 +1,4 @@
-
+-Change DatabaseConnection String.
 -All Module is in "Employee Module"
 -Delete Button utilize isDelete = 1, not Total Delete in DB (I dont usually delete Information in DB).
 
